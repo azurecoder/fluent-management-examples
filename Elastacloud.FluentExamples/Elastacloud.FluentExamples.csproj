@@ -73,6 +73,8 @@
   <ItemGroup>
     <Compile Include="BuildVirtualMachine.cs" />
     <Compile Include="IBuilder.cs" />
+    <Compile Include="IWorkflow.cs" />
+    <Compile Include="LinqToStorage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
