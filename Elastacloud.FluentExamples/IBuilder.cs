@@ -6,6 +6,7 @@ namespace Elastacloud.FluentExamples
     {
         void SpinUp();
         void TearDown();
+        void DoSomething();
         string SubscriptionId { get; }
         X509Certificate2 ManagementCertificate { get; }
     }

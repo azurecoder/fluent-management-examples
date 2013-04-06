@@ -79,6 +79,11 @@ namespace Elastacloud.FluentExamples
             Console.WriteLine("Virtual machine has been deleted, with cloud service and storage");
         }
 
+        public void DoSomething()
+        {
+            Console.WriteLine("Nothing to do!");
+        }
+
         X509Certificate2 IBuilder.ManagementCertificate
         {
             get { return _certificate; }

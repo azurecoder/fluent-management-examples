@@ -40,7 +40,7 @@
     </Reference>
     <Reference Include="Elastacloud.AzureManagement.Fluent, Version=0.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Elastacloud.AzureManagement.Fluent.0.4.4.8\lib\Elastacloud.AzureManagement.Fluent.dll</HintPath>
+      <HintPath>..\..\..\Fluent Management\Elastacloud.AzureManagement.Fluent\bin\Debug\Elastacloud.AzureManagement.Fluent.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -73,10 +73,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildGetBlobRequest.cs" />
+    <Compile Include="BuildMobileService.cs" />
     <Compile Include="BuildVirtualMachine.cs" />
+    <Compile Include="WorkflowFluentDeploymentWithSSL.cs" />
+    <Compile Include="WorkflowRoleSystemWatcher.cs" />
+    <Compile Include="WorkflowFluentDeployment.cs" />
     <Compile Include="IBuilder.cs" />
     <Compile Include="IWorkflow.cs" />
-    <Compile Include="LinqToStorage.cs" />
+    <Compile Include="WorkflowLinqToStorage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
