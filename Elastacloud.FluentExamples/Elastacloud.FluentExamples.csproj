@@ -40,19 +40,19 @@
     </Reference>
     <Reference Include="Elastacloud.AzureManagement.Fluent, Version=0.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Fluent Management\Elastacloud.AzureManagement.Fluent\bin\Debug\Elastacloud.AzureManagement.Fluent.dll</HintPath>
+      <HintPath>..\packages\Elastacloud.AzureManagement.Fluent.0.4.4.9\lib\Elastacloud.AzureManagement.Fluent.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Elastacloud.AzureManagement.Fluent.0.4.4.8\lib\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+      <HintPath>..\packages\Elastacloud.AzureManagement.Fluent.0.4.4.9\lib\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Elastacloud.AzureManagement.Fluent.0.4.4.8\lib\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+      <HintPath>..\packages\Elastacloud.AzureManagement.Fluent.0.4.4.9\lib\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Smo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Elastacloud.AzureManagement.Fluent.0.4.4.8\lib\Microsoft.SqlServer.Smo.dll</HintPath>
+      <HintPath>..\packages\Elastacloud.AzureManagement.Fluent.0.4.4.9\lib\Microsoft.SqlServer.Smo.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

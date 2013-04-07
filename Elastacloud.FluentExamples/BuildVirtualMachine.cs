@@ -58,7 +58,7 @@ namespace Elastacloud.FluentExamples
         void IBuilder.SpinUp()
         {
             var storageClient = new StorageClient(_subscriptionId, _certificate);
-            storageClient.CreateNewStorageAccount(Settings.DefaultStorage);
+            storageClient.CreateStorageAccountIfNotExists(Settings.DefaultStorage);
             var client = new WindowsVirtualMachineClient(_subscriptionId, _certificate);
             var newClient = client.CreateNewVirtualMachineFromTemplateGallery(_properties);
             Console.WriteLine("Virtual machine now created - with diskname {0}", 

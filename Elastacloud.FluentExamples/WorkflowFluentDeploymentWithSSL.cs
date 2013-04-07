@@ -35,7 +35,7 @@ namespace Elastacloud.FluentExamples
             _context = manager.GetDeploymentManager()
                                  .AddCertificate(_managementCertificate)
                                  .ForNewDeployment(Settings.DeplopymentName)
-                                 .SetBuildDirectoryRoot("builddirectory")
+                                 .SetBuildDirectoryRoot(Settings.BuildDirectory)
                                  .EnableRemoteDesktopAndSslForRole(Settings.RoleName)
                                  .WithUsernameAndPassword(Settings.Username, Settings.Password)
                                  .GenerateAndAddServiceCertificate(Settings.CloudServiceName + ".cloudapp.net")

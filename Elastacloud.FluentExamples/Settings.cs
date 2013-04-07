@@ -19,10 +19,11 @@ namespace Elastacloud.FluentExamples
         public static string DeplopymentName { get { return ConfigurationManager.AppSettings["deploymentname"]; } }
         public static string PublishSettingsFilePath { get { return ConfigurationManager.AppSettings["publishsettings"]; } }
         public static string RemoteDesktopFilePath { get { return ConfigurationManager.AppSettings["rdpfile"]; } }
-        public static string VmRoleAndServiceName { get { return ConfigurationManager.AppSettings["vmservicerole"]; } }
+        public static string VmRoleAndServiceName { get { return ConfigurationManager.AppSettings["vmroleservice"]; } }
         public static string CloudServiceName { get { return ConfigurationManager.AppSettings["cloudservice"]; } }
         public static string RoleName { get { return ConfigurationManager.AppSettings["rolename"]; } }
         public static string DeploymentPath { get { return ConfigurationManager.AppSettings["deploymentpath"]; } }
+        public static string BuildDirectory { get { return ConfigurationManager.AppSettings["builddirectory"]; } }
         public static string SubscriptionId { get; set; }
         public static X509Certificate2 ManagementCertificate { get; set; }
     }
