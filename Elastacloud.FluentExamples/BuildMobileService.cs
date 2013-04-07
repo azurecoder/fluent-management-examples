@@ -22,7 +22,7 @@ namespace Elastacloud.FluentExamples
         public void SpinUp()
         {
             var client = new MobileServiceClient(SubscriptionId, ManagementCertificate);
-            client.CreateMobileServiceWithNewDb("mobilestacked", "azurecoder", "Password101!");
+            client.CreateMobileServiceWithNewDb(Settings.MobileServiceName, Settings.Username, Settings.Password);
             Console.WriteLine("Yeah, we created a mobile service using the Service Management API - even though it hasn't been published yet!");
 
             // Display some details about the mobile service
@@ -45,7 +45,7 @@ namespace Elastacloud.FluentExamples
 
         public void DoSomething()
         {
-            var client = new MobileServiceClient(SubscriptionId, ManagementCertificate, "mobilestacked");
+            var client = new MobileServiceClient(SubscriptionId, ManagementCertificate, Settings.MobileServiceName);
             if (!client.Tables.Exists(a => a.TableName == "Speakers"))
                 client.AddTable("Speakers");
             client.AddTableScript(CrudOperation.Insert, "Speakers", "function insert(item, user, request){ /*Another fluent success!*/request.execute();}", Roles.User);

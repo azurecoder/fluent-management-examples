@@ -76,6 +76,9 @@
     <Compile Include="BuildGetBlobRequest.cs" />
     <Compile Include="BuildMobileService.cs" />
     <Compile Include="BuildVirtualMachine.cs" />
+    <Compile Include="WorkflowLoadConfig.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="WorkflowPublishSettings.cs" />
     <Compile Include="WorkflowFluentDeploymentWithSSL.cs" />
     <Compile Include="WorkflowRoleSystemWatcher.cs" />
     <Compile Include="WorkflowFluentDeployment.cs" />

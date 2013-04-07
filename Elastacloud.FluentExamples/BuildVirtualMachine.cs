@@ -21,22 +21,21 @@ namespace Elastacloud.FluentExamples
         private readonly string _subscriptionId;
         private readonly string _rdpFile;
 
-        public BuildVirtualMachine(string subscriptionId, string publishSettingsFile, string rdpFile)
+        public BuildVirtualMachine(string subscriptionId, X509Certificate2 certificate)
         {
-            var settings = PublishSettingsExtractor.GetFromFile(publishSettingsFile);
-            _certificate = settings.AddPublishSettingsToPersonalMachineStore();
+            _certificate = certificate;
             _subscriptionId = subscriptionId;
-            _rdpFile = rdpFile;
+            _rdpFile = Settings.RemoteDesktopFilePath;
             _properties = new WindowsVirtualMachineProperties()
                              {
-                                 AdministratorPassword = "Password101!",
-                                 RoleName = "stackedliverpool",
-                                 DeploymentName = "stackedliverpool",
+                                 AdministratorPassword = Settings.Password,
+                                 RoleName = Settings.VmRoleAndServiceName,
+                                 DeploymentName = Settings.VmRoleAndServiceName,
                                  Certificate = _certificate,
                                  Location = LocationConstants.NorthEurope,
                                  UseExistingCloudService = false,
                                  SubscriptionId = subscriptionId,
-                                 CloudServiceName = "stackedliverpool",
+                                 CloudServiceName = Settings.VmRoleAndServiceName,
                                  PublicEndpoints = new List<InputEndpoint>(new[]
                                                                                {
                                                                                    new InputEndpoint()
@@ -49,7 +48,7 @@ namespace Elastacloud.FluentExamples
                                                                                }),
                                  VirtualMachineType = VirtualMachineTemplates.WindowsServer2012,
                                  VmSize = VmSize.Medium,
-                                 StorageAccountName = "stackedstorage",
+                                 StorageAccountName = Settings.DefaultStorage,
                                  DataDisks = new List<DataVirtualHardDisk>(new[] {
                                      new DataVirtualHardDisk(){LogicalDiskSizeInGB = 100}
                                  })
@@ -59,7 +58,7 @@ namespace Elastacloud.FluentExamples
         void IBuilder.SpinUp()
         {
             var storageClient = new StorageClient(_subscriptionId, _certificate);
-            storageClient.CreateNewStorageAccount("stackedstorage");
+            storageClient.CreateNewStorageAccount(Settings.DefaultStorage);
             var client = new WindowsVirtualMachineClient(_subscriptionId, _certificate);
             var newClient = client.CreateNewVirtualMachineFromTemplateGallery(_properties);
             Console.WriteLine("Virtual machine now created - with diskname {0}", 

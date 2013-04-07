@@ -27,7 +27,7 @@ namespace Elastacloud.FluentExamples
         {
             // use AMS to transfer file
             var storageClient = new StorageClient(_subscriptionId, _managementCertificate);
-            var keys = storageClient.GetStorageAccountKeys("stackedstorage");
+            var keys = storageClient.GetStorageAccountKeys(Settings.DefaultStorage);
             StorageKey = keys[0];
         }
 
@@ -43,8 +43,8 @@ namespace Elastacloud.FluentExamples
             var builder = new StringBuilder("GET");
             builder.Append(lineEndings);
             builder.AppendFormat("x-ms-date:{0}\n", date);
-            builder.AppendFormat("x-ms-version:2011-08-18\n");
-            builder.Append("/stackedstorage/docs/test.txt\n");
+            builder.Append("x-ms-version:2011-08-18\n");
+            builder.AppendFormat("/{0}/docs/test.txt\n",Settings.DefaultStorage);
             builder.Append("timeout:90");
 
             string signature;
@@ -56,7 +56,8 @@ namespace Elastacloud.FluentExamples
 
             var authValue = "SharedKey stackedstorage:" + signature;
 
-            var request = (HttpWebRequest)WebRequest.Create("http://stackedstorage.blob.core.windows.net/docs/test.txt?timeout=90");
+            var request = (HttpWebRequest)WebRequest.Create(
+                String.Format("http://{0}.blob.core.windows.net/docs/test.txt?timeout=90", Settings.DefaultStorage));
             request.Method = "GET";
             request.ContentLength = 0;
             request.Headers.Add("x-ms-date", date);
