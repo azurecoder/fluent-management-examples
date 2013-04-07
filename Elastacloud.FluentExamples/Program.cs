@@ -11,8 +11,8 @@ namespace Elastacloud.FluentExamples
 {
     class Program
     {
-        static readonly List<IBuilder> Builders = new List<IBuilder>();
-        static readonly List<IWorkflow> Workflows = new List<IWorkflow>();
+        static readonly Dictionary<string, IBuilder> Builders = new Dictionary<string, IBuilder>();
+        static readonly Dictionary<string, IWorkflow> Workflows = new Dictionary<string, IWorkflow>();
         // args 0 - the subscription id
         // args 1 - the path to the publishsettings file
         // args 2 - the path to the rdp output file 
@@ -23,42 +23,69 @@ namespace Elastacloud.FluentExamples
 
             // manipulate and transform config files
             IWorkflow getConfig = new WorkflowLoadConfig(Path.Combine(Settings.DeploymentPath, "TestCloudInstall.cscfg"));
-            getConfig.PreActionSteps();
+            Workflows.Add(getConfig.ToString(), getConfig);
+            ProcessWorkflow(getConfig.ToString());
 
             // do the publishsettings 
             IWorkflow getSettings = new WorkflowPublishSettings(args[0], Settings.PublishSettingsFilePath);
-            getSettings.PreActionSteps();
+            Workflows.Add(getSettings.ToString(), getSettings);
+            ProcessWorkflow(getSettings.ToString());
 
             // Add the test get blob API - before running this create a storage account using AMS called stackedstorage
             IWorkflow getBlob = new BuildGetBlobRequest(Settings.SubscriptionId, Settings.ManagementCertificate);
-            Workflows.Add(getBlob);
-
-            // create a virtual machine
-            IBuilder virtualMachine = new BuildVirtualMachine(args[0], Settings.ManagementCertificate);
-            Builders.Add(virtualMachine);
-
-            // test linq to azure with storage
-            IWorkflow linqToStorage = new WorkflowLinqToStorage(Settings.SubscriptionId, Settings.ManagementCertificate);
-            Workflows.Add(linqToStorage);
-
-            // test create a mobile services deployment
-            IBuilder mobileService = new BuildMobileService(Settings.SubscriptionId, Settings.ManagementCertificate);
-            Builders.Add(mobileService);
+            Workflows.Add(getBlob.ToString(), getBlob);
+            ProcessWorkflow(getBlob.ToString());
 
             // test paas deployment
             // test linq to azure with cloud services
             // test paas orchestration
             IWorkflow fluentDeployment = new WorkflowFluentDeployment(Settings.SubscriptionId, Settings.ManagementCertificate);
-            Workflows.Add(fluentDeployment);
+            Workflows.Add(fluentDeployment.ToString(), fluentDeployment);
+            ProcessWorkflow(fluentDeployment.ToString());
+
+            // create a virtual machine
+            IBuilder virtualMachine = new BuildVirtualMachine(args[0], Settings.ManagementCertificate);
+            Builders.Add(virtualMachine.ToString(), virtualMachine);
+            ProcessBuilder(virtualMachine.ToString());
+
+            // test linq to azure with storage
+            IWorkflow linqToStorage = new WorkflowLinqToStorage(Settings.SubscriptionId, Settings.ManagementCertificate);
+            Workflows.Add(linqToStorage.ToString(), linqToStorage);
+            ProcessWorkflow(linqToStorage.ToString());
+
+            // test create a mobile services deployment
+            IBuilder mobileService = new BuildMobileService(Settings.SubscriptionId, Settings.ManagementCertificate);
+            Builders.Add(mobileService.ToString(), mobileService);
+            ProcessBuilder(mobileService.ToString());
             
             // test role system watcher
-            var watcher = new WorkflowRoleSystemWatcher(virtualMachine.SubscriptionId, virtualMachine.ManagementCertificate);
-            Workflows.Add(watcher);
+            var watcher = new WorkflowRoleSystemWatcher(Settings.SubscriptionId, Settings.ManagementCertificate);
+            Workflows.Add(watcher.ToString(), watcher);
+            ProcessWorkflow(watcher.ToString());
 
             // test paas build
+            var workflowSSL = new WorkflowFluentDeploymentWithSSL(Settings.SubscriptionId, Settings.ManagementCertificate);
+            Workflows.Add(workflowSSL.ToString(), workflowSSL);
+            ProcessWorkflow(workflowSSL.ToString());
             
             Console.WriteLine("Press [ENTER] to exit");
             Console.Read();
+        }
+
+        static void ProcessWorkflow(string workflowName)
+        {
+            var workflow = Workflows[workflowName];
+            workflow.PreActionSteps();
+            workflow.DoWork();
+            workflow.PostActionSteps();
+        }
+
+        static void ProcessBuilder(string builderName)
+        {
+            var builder = Builders[builderName];
+            builder.SpinUp();
+            builder.DoSomething();
+            builder.TearDown();
         }
     }
 }

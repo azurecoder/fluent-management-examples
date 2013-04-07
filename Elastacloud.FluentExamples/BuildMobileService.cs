@@ -97,5 +97,10 @@ namespace Elastacloud.FluentExamples
         public X509Certificate2 ManagementCertificate { get; private set; }
 
         #endregion
+
+        public override string ToString()
+        {
+            return "BuildMobileService";
+        }
     }
 }

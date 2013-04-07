@@ -56,5 +56,10 @@ namespace Elastacloud.FluentExamples
         }
 
         #endregion
+
+        public override string ToString()
+        {
+            return "WorkflowRoleSystemWatcher";
+        }
     }
 }

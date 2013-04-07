@@ -92,6 +92,11 @@ namespace Elastacloud.FluentExamples
         {
             get { return _subscriptionId; }
         }
+
+        public override string ToString()
+        {
+            return "BuildVirtualMachine";
+        }
     }
 }
 

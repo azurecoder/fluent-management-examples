@@ -71,5 +71,10 @@ namespace Elastacloud.FluentExamples
         #endregion
 
         public string StorageKey { get; private set; }
+
+        public override string ToString()
+        {
+            return "BuildGetBlobRequest";
+        }
     }
 }
