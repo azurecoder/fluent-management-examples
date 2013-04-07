@@ -30,6 +30,7 @@ namespace Elastacloud.FluentExamples
             ProcessWorkflow(getSettings.ToString());
 
             // Add the test get blob API - before running this create a storage account using AMS called stackedstorage
+            // TO CHECK THIS DEMO CREATE THE STORAGE ACOUNT AND CONTAINER "docs" AND THEN UPLOAD A "test.txt" FILE
             IWorkflow getBlob = new BuildGetBlobRequest(Settings.SubscriptionId, Settings.ManagementCertificate);
             Workflows.Add(getBlob.ToString(), getBlob);
             ProcessWorkflow(getBlob.ToString());
@@ -39,32 +40,32 @@ namespace Elastacloud.FluentExamples
             // test paas orchestration
             IWorkflow fluentDeployment = new WorkflowFluentDeployment(Settings.SubscriptionId, Settings.ManagementCertificate);
             Workflows.Add(fluentDeployment.ToString(), fluentDeployment);
-            //ProcessWorkflow(fluentDeployment.ToString());
+            ProcessWorkflow(fluentDeployment.ToString());
 
             // create a virtual machine
             IBuilder virtualMachine = new BuildVirtualMachine(args[0], Settings.ManagementCertificate);
             Builders.Add(virtualMachine.ToString(), virtualMachine);
-            //ProcessBuilder(virtualMachine.ToString());
+            ProcessBuilder(virtualMachine.ToString());
 
             // test linq to azure with storage
             IWorkflow linqToStorage = new WorkflowLinqToStorage(Settings.SubscriptionId, Settings.ManagementCertificate);
             Workflows.Add(linqToStorage.ToString(), linqToStorage);
-            //ProcessWorkflow(linqToStorage.ToString());
+            ProcessWorkflow(linqToStorage.ToString());
 
             // test create a mobile services deployment
             IBuilder mobileService = new BuildMobileService(Settings.SubscriptionId, Settings.ManagementCertificate);
             Builders.Add(mobileService.ToString(), mobileService);
-            //ProcessBuilder(mobileService.ToString());
+            ProcessBuilder(mobileService.ToString());
             
             // test role system watcher
             var watcher = new WorkflowRoleSystemWatcher(Settings.SubscriptionId, Settings.ManagementCertificate);
             Workflows.Add(watcher.ToString(), watcher);
-            //ProcessWorkflow(watcher.ToString());
+            ProcessWorkflow(watcher.ToString());
 
             // test paas build
             var workflowSSL = new WorkflowFluentDeploymentWithSSL(Settings.SubscriptionId, Settings.ManagementCertificate);
             Workflows.Add(workflowSSL.ToString(), workflowSSL);
-            //ProcessWorkflow(workflowSSL.ToString());
+            ProcessWorkflow(workflowSSL.ToString());
             
             Console.WriteLine("Press [ENTER] to exit");
             Console.Read();
