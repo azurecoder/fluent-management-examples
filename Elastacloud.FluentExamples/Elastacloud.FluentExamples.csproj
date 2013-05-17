@@ -40,7 +40,7 @@
     </Reference>
     <Reference Include="Elastacloud.AzureManagement.Fluent, Version=0.4.8.5, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Elastacloud.AzureManagement.Fluent.0.4.8.5\lib\Elastacloud.AzureManagement.Fluent.dll</HintPath>
+      <HintPath>..\..\Azure Fluent Management\Elastacloud.AzureManagement.Fluent\bin\Debug\Elastacloud.AzureManagement.Fluent.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

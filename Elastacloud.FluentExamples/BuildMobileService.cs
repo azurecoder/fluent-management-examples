@@ -40,7 +40,13 @@ namespace Elastacloud.FluentExamples
 
         public void TearDown()
         {
-            Console.WriteLine("Haven't implemented a teardown!");
+            var client = new MobileServiceClient(SubscriptionId, ManagementCertificate, Settings.MobileServiceName)
+                {
+                    SqlAzureUsername = Settings.Username,
+                    SqlAzurePassword = Settings.Password
+                };
+            
+            client.Delete();
         }
 
         public void DoSomething()
