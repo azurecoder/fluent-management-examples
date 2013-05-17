@@ -58,6 +58,7 @@ namespace Elastacloud.FluentExamples
             client.DynamicSchemaEnabled = true;
             client.MicrosoftAccountClientId = "test";
             client.MicrosoftAccountClientSecret = "test";
+            client.MicrosoftAccountPackageSID = "test";
             client.Update();
 
             Console.WriteLine("Application key: {0}", client.ApplicationKey);

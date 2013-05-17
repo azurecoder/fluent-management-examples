@@ -46,7 +46,7 @@ namespace Elastacloud.FluentExamples
                                                                                            Protocol = Protocol.TCP
                                                                                        }
                                                                                }),
-                                 VirtualMachineType = VirtualMachineTemplates.WindowsServer2012,
+                                 VirtualMachineType = VirtualMachineTemplates.WindowsServer2012_127GB,
                                  VmSize = VmSize.Medium,
                                  StorageAccountName = Settings.DefaultStorage,
                                  DataDisks = new List<DataVirtualHardDisk>(new[] {

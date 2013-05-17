@@ -29,6 +29,11 @@ namespace Elastacloud.FluentExamples
             Workflows.Add(getSettings.ToString(), getSettings);
             ProcessWorkflow(getSettings.ToString());
 
+            // test create a mobile services deployment
+            IBuilder mobileService = new BuildMobileService(Settings.SubscriptionId, Settings.ManagementCertificate);
+            Builders.Add(mobileService.ToString(), mobileService);
+            ProcessBuilder(mobileService.ToString());
+
             // Add the test get blob API - before running this create a storage account using AMS called stackedstorage
             // TO CHECK THIS DEMO CREATE THE STORAGE ACOUNT AND CONTAINER "docs" AND THEN UPLOAD A "test.txt" FILE
             IWorkflow getBlob = new BuildGetBlobRequest(Settings.SubscriptionId, Settings.ManagementCertificate);
@@ -52,10 +57,6 @@ namespace Elastacloud.FluentExamples
             Workflows.Add(linqToStorage.ToString(), linqToStorage);
             ProcessWorkflow(linqToStorage.ToString());
 
-            // test create a mobile services deployment
-            IBuilder mobileService = new BuildMobileService(Settings.SubscriptionId, Settings.ManagementCertificate);
-            Builders.Add(mobileService.ToString(), mobileService);
-            ProcessBuilder(mobileService.ToString());
             
             // test role system watcher
             var watcher = new WorkflowRoleSystemWatcher(Settings.SubscriptionId, Settings.ManagementCertificate);
